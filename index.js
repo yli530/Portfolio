@@ -12,14 +12,14 @@ for (let i = 0; i < 3; i++) {
     pageObj.push(document.getElementById(ids[i + 3]));
 }
 
-pageObj.push(document.getElementById("workDetail"));
+pageObj.push(document.getElementById("work"));
 
 showOnly(pageObj[0]);
 
 let read_more = [...document.getElementsByClassName("read-more")]
 
 read_more.forEach(element => element.addEventListener('click', (e) => {
-    showOnly(document.getElementById("workDetail"));
+    showOnly(document.getElementById("work"));
     changeWorkDetails(element.id);
 }));
 
@@ -31,7 +31,17 @@ function showOnly(element) {
 
 
 function changeWorkDetails(id) {
-    console.log(id);
-    let element = document.getElementById("workDetail");
-    element.innerHTML = data[id].description;
+    console.log(data.length)
+    let title = document.getElementById("workTitle");
+    let description = document.getElementById("workDetail");
+    let img = document.getElementById("detailImg");
+    if(id < data.length) {
+        title.innerHTML = data[id].name;
+        description.innerHTML = data[id].description;
+        img.src = data[id].imageSrc;
+    } else {
+        title.innerHTML = "placeholder";
+        description.innerHTML = "place holder description";
+        img.src = './img/temp.png';
+    }
 }
