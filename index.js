@@ -31,7 +31,6 @@ function showOnly(element) {
 
 
 function changeWorkDetails(id) {
-    console.log(data.length)
     let title = document.getElementById("workTitle");
     let description = document.getElementById("workDetail");
     let img = document.getElementById("detailImg");
@@ -43,5 +42,8 @@ function changeWorkDetails(id) {
         title.innerHTML = "placeholder";
         description.innerHTML = "place holder description";
         img.src = './img/temp.png';
+    }
+    for(let i = 0; i < data[id].links.length; i++) {
+        description.innerHTML += "<br><br>Check out the " + ((i == 0) ? "playable" : "github") + " link <a href=\"" + data[id].links[i] + "\" target=\"\_target\" rel=\"noopener noreferrer\"> here</a>";
     }
 }
